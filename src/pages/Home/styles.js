@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { darken } from 'polished';
+import { darken, lighten } from 'polished';
 
 export const ProductList = styled.ul`
   display: grid;
@@ -35,6 +35,7 @@ export const ProductList = styled.ul`
 
     button {
       display: flex;
+      cursor: pointer;
       align-items: center;
       background: #191920;
       color: #fff;
@@ -42,10 +43,14 @@ export const ProductList = styled.ul`
       border-radius: 4px;
       overflow: hidden;
       margin-top: auto;
-      transition: background 0.2s;
+      transition: background 0.3s;
 
       &:hover {
         background: ${darken(0.1, '#191920')};
+      }
+
+      &:active {
+        background: ${lighten(0.1, '#191920')};
       }
 
       div {

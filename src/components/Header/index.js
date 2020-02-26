@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { MdShoppingBasket } from 'react-icons/md';
 
 import { Container, Cart } from './styles';
 import logo from '../../assets/images/logo.svg';
 
-const index = () => {
+function Header({ cartSize }) {
   return (
     <Container>
       <Link to="/">
@@ -15,12 +16,14 @@ const index = () => {
       <Cart to="/cart">
         <div>
           <strong>Meu carrinho</strong>
-          <span>3 items</span>
+          <span>{cartSize} itens</span>
         </div>
         <MdShoppingBasket color="#fff" size={36} />
       </Cart>
     </Container>
   );
-};
+}
 
-export default index;
+export default connect(state => ({
+  cartSize: state.cart.length,
+}))(Header);
